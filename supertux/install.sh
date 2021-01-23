@@ -6,7 +6,7 @@ INSTALLPATH="/storage/roms/ports"
 PKG_NAME="SuperTux"
 PKG_VERSION="1.0.0"
 PKG_FILE="supertux.zip"
-PKG_SHASUM="8579b68120ecd779a23b18bd5e8c57ab90640e9c3a4eb98c489a002618141d1e"
+PKG_SHASUM="88cc01d8af3bd93bd4edfa84da9edad0fb2e6d1388fd8aea0e349f60152e4794"
 PKG_URL="https://github.com/XargonWan/packages-351ELEC/releases/download"
 
 cd ${INSTALLPATH}
@@ -24,6 +24,8 @@ rm -f "${PKG_FILE}"
 
 cp -rf ${INSTALLPATH}/gamedata /storage/roms/
 rm -r ${INSTALLPATH}/gamedata
+
+cp -rf system-${PKG_NAME}* ${INSTALLPATH}/images/
 
 ### Create the start script
 cat <<EOF >${INSTALLPATH}/"supertux.sh"

@@ -8,3 +8,6 @@ PKG_NAME="supertux"
 rm -rf "${INSTALLPATH}/${PKG_NAME}"
 rm -f "${INSTALLPATH}/images/system-${PKG_NAME}*"
 rm -f "${INSTALLPATH}/videos/system-${PKG_NAME}*"
+
+CFG="/storage/.emulationstation/es_systems.cfg"
+xmlstarlet ed -L -P -d "/systemList/system[name='SuperTux']" $CFG

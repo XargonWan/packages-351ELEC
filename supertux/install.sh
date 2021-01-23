@@ -6,12 +6,12 @@ INSTALLPATH="/storage/roms/ports"
 PKG_NAME="SuperTux"
 PKG_VERSION="1.0.0"
 PKG_FILE="supertux.zip"
-PKG_SHASUM="ADAA797276151B5275A300D8B9F8B57812DB26EDC079DFECFDD0D6179929AAE2"
-PKG_URL="https://github.com/XargonWan/packages-351ELEC/"
+PKG_SHASUM="8579b68120ecd779a23b18bd5e8c57ab90640e9c3a4eb98c489a002618141d1e"
+PKG_URL="https://github.com/XargonWan/packages-351ELEC/releases/download"
 
 cd ${INSTALLPATH}
 
-curl -Lo ${PKG_FILE} ${PKG_URL}/${PKG_FILE}
+curl -Lo ${PKG_FILE} ${PKG_URL}/${PKG_VERSION}/${PKG_FILE}
 BINSUM=$(sha256sum ${PKG_FILE} | awk '{print $1}')
 if [ ! "${PKG_SHASUM}" == "${BINSUM}" ]
 then
@@ -22,8 +22,8 @@ fi
 unzip -o "${PKG_FILE}"
 rm -f "${PKG_FILE}"
 
-mv -r ports ${INSTALLPATH}
-mv -r supertux/gamedata /storage/roms/gamedata
+cp -rf ${INSTALLPATH}/gamedata /storage/roms/
+rm -r ${INSTALLPATH}/gamedata
 
 ### Create the start script
 cat <<EOF >${INSTALLPATH}/"supertux.sh"
